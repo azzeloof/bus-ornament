@@ -1,5 +1,5 @@
 /*
- * Snowflake Christmas Ornament
+ * London Bus Christmas Ornament
  * 
  * Sara Adkins & Adam Zeloof - November 2021
  * 
