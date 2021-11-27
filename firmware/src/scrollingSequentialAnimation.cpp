@@ -10,7 +10,8 @@ void scrollingSequentialProgram(uint8_t nLeds, uint32_t cycleTime) {
         } else {
             nextLed = led + nLeds;
         }
-        if (crossfade(led, nextLed, MAX_LEVEL, MIN_LEVEL, fadeTime) != 0);
+        if (crossfade(led, nextLed, MAX_LEVEL, MIN_LEVEL, fadeTime) != 0) return;
         if (hold(holdTime) != 0) return;
     }
+    return;
 }

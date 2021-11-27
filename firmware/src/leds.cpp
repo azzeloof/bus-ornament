@@ -78,11 +78,12 @@ int fade(uint8_t led, uint8_t start, uint8_t end, uint32_t time) {
     uint8_t curLevel = start;
     uint8_t count = 0;
     uint8_t steps = abs(end - start);
-    int32_t timeStep = time / (end-start);
+    int32_t timeStep = time / steps;
     while (count < steps) {
         setLed(led, curLevel);
         if (hold(timeStep) != 0) return 1;
         curLevel += 1 - 2*(end < start);
+        count ++;
     }
     return 0;
 }
@@ -91,12 +92,13 @@ int crossfade(uint8_t led1, uint8_t led2, uint8_t start, uint8_t end, uint32_t t
     uint8_t curLevel = start;
     uint8_t count = 0;
     uint8_t steps = abs(end - start);
-    int32_t timeStep = time / (end-start);
+    int32_t timeStep = time / steps;
     while (count < steps) {
         setLed(led1, curLevel);
         setLed(led2, end - curLevel);
         if (hold(timeStep) != 0) return 1;
         curLevel += 1 - 2*(end < start);
+        count ++;
     }
     return 0;
 }

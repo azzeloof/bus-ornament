@@ -13,4 +13,5 @@ void singleSequentialProgram(uint32_t cycleTime) {
         if (crossfade(led, nextLed, MAX_LEVEL, MIN_LEVEL, fadeTime) != 0) return;
         if (hold(holdTime) != 0) return;
     }
+    return;
 }

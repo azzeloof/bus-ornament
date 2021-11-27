@@ -61,22 +61,22 @@ void allOffProgram()
   checkButton();
 }
 
-uint32_t delayMS = 1000;
+uint32_t delayMS = 2000;
 
 void loop () {
-  switch(mode) {
+  switch(mode) {   
     case 0:
-      allOnProgram();
-      break;
-    case 1:
-      singleSequentialProgram(delayMS);
-      break;
-    case 2:
-      scrollingSequentialProgram(4, delayMS);
-      break;   
-    case 3:
       randomProgram(delayMS);
       break; 
+    case 1:
+      allOnProgram();
+      break;
+    case 2:
+      singleSequentialProgram(delayMS);
+      break;
+    case 3:
+      scrollingSequentialProgram(4, delayMS);
+      break;
     default:
       allOffProgram();
       break;
