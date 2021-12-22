@@ -4,7 +4,7 @@
 ## Hardware
 The board consists of twelve reverse-mounted LEDs [charlieplexed](https://en.wikipedia.org/wiki/Charlieplexing) and hooked up to an ATtiny85. Each LED is individually addressable, even though only four of the ATtiny's pins are being used (Charlieplexing is magic)! The board also has a pushbutton for switching between modes. The ornament is powered via two CR2025 batteries which feed a 3.3V buck converter.
 
-The design works as-is, but there's an issue. When the programmer is hooked up, it needs to be set to not power the PCB. If it does power the boar,d it will immediatley fry the buck converter. To get around this, I cut the VCC trace on the ICSP and connected that pin to the unused pin of the power switch via a bodged wire. 
+The design works as-is, but there's an issue. When the programmer is hooked up, it needs to be set to not power the PCB. If it does power the boar,d it will immediatley fry the buck converter. To get around this, I cut the VCC trace to the ICSP and connected that pin to the unused pin of the power switch via a bodged wire. 
 
 ## Firmware
 The ATtiny is programmed using the PlatformIO framework. Before programming, you need to write an Arduino bootloader to the chip using the Arduino IDE. When burning the bootloader, here are the settings we used:
