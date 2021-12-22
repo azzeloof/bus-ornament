@@ -10,17 +10,17 @@ uint8_t LogLevels[64] = { 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
 void initOrder()
 {
     Order[0] = 0;
-    Order[1] = 4;
-    Order[2] = 8;
-    Order[3] = 1;
-    Order[4] = 5;
-    Order[5] = 2;
-    Order[6] = 3;
+    Order[1] = 3;
+    Order[2] = 1;
+    Order[3] = 6;
+    Order[4] = 2;
+    Order[5] = 9;
+    Order[6] = 4;
     Order[7] = 7;
-    Order[8] = 11;
-    Order[9] = 6;
-    Order[10] = 10;    
-    Order[11] = 9;   
+    Order[8] = 8;
+    Order[9] = 11;
+    Order[10] = 5;
+    Order[11] = 10;
 }
 
 void setupLeds()
@@ -80,11 +80,12 @@ int fade(uint8_t led, uint8_t start, uint8_t end, uint32_t time) {
     uint8_t steps = abs(end - start);
     int32_t timeStep = time / steps;
     while (count < steps) {
-        setLed(led, curLevel);
+        setLedLog(led, curLevel);
         if (hold(timeStep) != 0) return 1;
         curLevel += 1 - 2*(end < start);
         count ++;
     }
+    setLed(led, end);
     return 0;
 }
 
@@ -94,11 +95,13 @@ int crossfade(uint8_t led1, uint8_t led2, uint8_t start, uint8_t end, uint32_t t
     uint8_t steps = abs(end - start);
     int32_t timeStep = time / steps;
     while (count < steps) {
-        setLed(led1, curLevel);
-        setLed(led2, end - curLevel);
+        setLedLog(led1, curLevel);
+        setLedLog(led2, start - curLevel + end);
         if (hold(timeStep) != 0) return 1;
         curLevel += 1 - 2*(end < start);
         count ++;
     }
+    setLed(led1, end);
+    setLed(led2, start);
     return 0;
 }
